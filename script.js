@@ -92,4 +92,41 @@ navLinks.forEach(link => {
             target.scrollIntoView({ behavior: 'smooth' });
         }
     });
-}); 
+});
+
+// Кнопка "Скачать PDF"
+const pdfBtn = document.getElementById('download-pdf');
+if (pdfBtn) {
+    pdfBtn.addEventListener('click', () => {
+        const pdfContent = document.getElementById('pdf-content');
+        const avatarImg = document.getElementById('avatar-img');
+        // Временно скрываем аватар
+        let prevDisplay = null;
+        if (avatarImg) {
+            prevDisplay = avatarImg.style.display;
+            avatarImg.style.display = 'none';
+        }
+        pdfBtn.disabled = true;
+        pdfBtn.textContent = 'Готовим PDF...';
+        html2canvas(pdfContent, { scale: 1 }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new window.jspdf.jsPDF({
+                orientation: 'portrait',
+                unit: 'px',
+                format: [canvas.width, canvas.height]
+            });
+            pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+            pdf.save('portfolio-karavaev.pdf');
+            pdfBtn.disabled = false;
+            pdfBtn.textContent = 'Скачать PDF';
+            // Возвращаем аватар
+            if (avatarImg) avatarImg.style.display = prevDisplay || '';
+        }).catch(() => {
+            pdfBtn.disabled = false;
+            pdfBtn.textContent = 'Скачать PDF';
+            // Возвращаем аватар
+            if (avatarImg) avatarImg.style.display = prevDisplay || '';
+            alert('Ошибка при создании PDF. Попробуйте ещё раз.');
+        });
+    });
+} 
