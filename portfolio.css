@@ -278,6 +278,14 @@ canvas {
     left: 0.5rem;
 }
 
+.experience-location {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
 @media (max-width: 768px) {
     .experience-grid {
         grid-template-columns: 1fr;
