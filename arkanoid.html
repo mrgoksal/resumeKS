@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Арканоид - Караваев Степан</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        .game-canvas {
+            background: #000;
+            border-radius: 8px;
+            margin: 1rem auto;
+        }
+        
+        .controls {
+            margin: 1rem 0;
+        }
+        
+        .controls button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: 0 0.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        .controls button:hover {
+            background: var(--accent-color-hover);
+        }
+        
+        .instructions {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="portfolio-nav">
+        <a href="portfolio.html" class="back-link"><i class="fas fa-arrow-left"></i> Вернуться к проектам</a>
+        <button id="theme-toggle" title="Сменить тему">🌙</button>
+    </nav>
+
+    <div class="game-container">
+        <h1>Арканоид</h1>
+        
+        <canvas id="arkanoidCanvas" class="game-canvas" width="800" height="600"></canvas>
+        
+        <div class="controls">
+            <button onclick="startGame()">Начать игру</button>
+            <button onclick="pauseGame()">Пауза</button>
+        </div>
+        
+        <div class="score">
+            Очки: <span id="score">0</span>
+        </div>
+        
+        <div class="instructions">
+            <h2>Управление</h2>
+            <p>Используйте стрелки влево/вправо или мышь для управления платформой</p>
+            <p>Цель игры: разбить все блоки, не дав мячу упасть вниз</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="arkanoid.js"></script>
+</body>
+</html> 

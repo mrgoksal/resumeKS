@@ -213,4 +213,14 @@ body.dark footer {
         height: 40px;
         font-size: 1.1em;
     }
+}
+.portfolio-link {
+    background: var(--accent-color);
+    color: white !important;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+.portfolio-link:hover {
+    background: var(--accent-color-hover);
 } 
